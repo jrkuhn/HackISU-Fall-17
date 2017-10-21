@@ -13,3 +13,10 @@ CHECK2. how to read the elements in chrome tab.
 5. For each video found, compare frame by frame to check for flashing
 
 6. IF flashing is found, replace video in page with a warning.
+
+
+DATABASE
+
+1. Setup server for image comparison (ideas: Apache, Amazon, etc.)
+2. Move/write code comparing video images to check for flashing on serverside
+3. lets client know if flashing occurs.

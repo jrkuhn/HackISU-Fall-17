@@ -13,7 +13,7 @@ for(var i = 0; i < document.images.length; i++){
 
   //title to image and print its title in the console
   images[i].src = document.images[i].src;
-  console.log(images[i].src);
+  alert(images[i].src);
 }
 
 //finds all videos
