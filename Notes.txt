@@ -1,3 +1,7 @@
 Note: First pull and then push
 
 Decide flashing image vs. normal moving picture.
+
+1. find images/video in a webpage.
+
+2. how to read the elements in chrome tab.
