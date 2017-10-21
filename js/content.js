@@ -3,9 +3,16 @@ alert(document.title);
 
 var images = [];
 for(var i = 0; i < document.images.length; i++){
-  images.push(document.images[i].src);
-  alert(images[i]);
+  images[i] = new Image();
+  images.push(document.images[i]);
+
+  images[i].src = document.images[i].src;
+  console.log(images[i].src);
 }
+
+var videos = document.querySelectorAll('a[href$=".mp4"]');
+
+
 
 // var imgElements = document.getElementsByTagName("img");
 // var videoElements = documet.getElementsbyTagName("video");

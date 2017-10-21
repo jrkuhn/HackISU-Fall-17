@@ -2,6 +2,14 @@ Note: First pull and then push
 
 Decide flashing image vs. normal moving picture.
 
-1. find images/video in a webpage.
+CHECK1. find images/video in a webpage.
 
-2. how to read the elements in chrome tab.
+CHECK2. how to read the elements in chrome tab.
+
+3. Find all videos in document and save them.
+
+4. Figure how to read each frame of a video (for comparison between frames)
+
+5. For each video found, compare frame by frame to check for flashing
+
+6. IF flashing is found, replace video in page with a warning.
