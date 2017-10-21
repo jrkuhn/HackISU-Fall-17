@@ -22,3 +22,7 @@ DATABASE
 1. Setup server for image comparison (ideas: Apache, Amazon, etc.)
 2. Move/write code comparing video images to check for flashing on serverside
 3. lets client know if flashing occurs.
+
+Stretch
+
+1. freeze only gifs on screen (in viewport).
