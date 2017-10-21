@@ -3,7 +3,9 @@ alert(document.title);
 
 var images = [];
 var gifs = document.querySelectorAll('img[src$=".gif"]');
-var SuperGifs = [];
+var gifArray = [];
+
+var superGifs = [];
 
 for(var i = 0; i < gifs.length; i++){
   //create new image in array index
@@ -15,16 +17,30 @@ for(var i = 0; i < gifs.length; i++){
   //title to image and print its title in the console
   images[i].src = gifs[i].src;
   console.log(images[i].src);
+  document.body.appendChild(gifs[i]);
 
 //doesn't work now
-  var SuperGifs[i] = new SuperGif({gifs[i]});
-  SuperGifs[i].load();
-  if(SuperGifs[i].get_length() == 1){
-    console.log(i+' static: ' SuperGifs[i].get_length() ' frames');
+  //var ex = document.getElementById("example");
+   superGifs[i] = new SuperGif({gif: gifs[i]});
+
+   superGifs[i].load(function (err) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('loaded '+i);
+        }
+    });
+   console.log(superGifs[i].get_auto_play());
+   console.log(superGifs[i].get_current_frame());
+   superGifs[i].pause(function(){console.log('paused ' + i)});
+
+  if(superGifs[i].get_length() <= 1){
+    console.log(i + gifs[i].src  + ' static: ' + superGifs[i].get_length() + ' frames');
   }
   else {
-    console.log(i+' moving: ' SuperGifs[i].get_length() ' frames');
+    console.log("image" + i + "moving");
   }
+  console.log(superGifs[i].get_current_frame());
 //
 }
 

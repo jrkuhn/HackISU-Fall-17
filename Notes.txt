@@ -6,7 +6,7 @@ CHECK1. find images/video in a webpage.
 
 CHECK2. how to read the elements in chrome tab.
 
-3. Find all videos in document and save them.
+CHECK3. Find all videos in document and save them.
 
 4. Figure how to read each frame of a video (for comparison between frames)
 
