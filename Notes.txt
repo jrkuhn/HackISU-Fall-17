@@ -1,1 +1,3 @@
 Note: First pull and then push
+
+Decide flashing image vs. normal moving picture.
