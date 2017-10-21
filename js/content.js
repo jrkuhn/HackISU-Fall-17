@@ -12,11 +12,20 @@ for(var i = 0; i < gifs.length; i++){
   //add image to array index
   images.push(gifs[i]);
 
-  var SuperGif[i] = new SuperGif(gifs[i]);
-
   //title to image and print its title in the console
   images[i].src = gifs[i].src;
   console.log(images[i].src);
+
+//doesn't work now
+  var SuperGifs[i] = new SuperGif({gifs[i]});
+  SuperGifs[i].load();
+  if(SuperGifs[i].get_length() == 1){
+    console.log(i+' static: ' SuperGifs[i].get_length() ' frames');
+  }
+  else {
+    console.log(i+' moving: ' SuperGifs[i].get_length() ' frames');
+  }
+//
 }
 
 
