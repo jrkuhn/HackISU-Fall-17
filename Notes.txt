@@ -14,6 +14,8 @@ CHECK2. how to read the elements in chrome tab.
 
 6. IF flashing is found, replace video in page with a warning.
 
+https://www.mathworks.com/matlabcentral/answers/74194-how-i-can-save-all-video-frames-in-array-of-images?requestedDomain=www.mathworks.com
+
 
 DATABASE
 
