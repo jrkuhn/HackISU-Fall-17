@@ -32,7 +32,6 @@ for(var i = 0; i < gifs.length; i++){
       //document.body.appendChild(frameData[j].getImage());
     }
 
-
     gifArrayMismatchPercentages[i] = new Array();
 
     //compares two
