@@ -37,12 +37,33 @@ for(var i = 0; i < gifs.length; i++){
 
     //compares two
 
-    for(j = 0; j < gifArrayScreenshots.length - 1; j++){
-      debugger;
+    for(j = 0; j < gifArrayScreenshots[i].length - 1; j++){
+      //debugger;
       gifArrayMismatchPercentages[i][j] = rmsDiff(getCanvasData(gifArrayScreenshots[i][j]).data,
                                                   getCanvasData(gifArrayScreenshots[i][j+1]).data);
       console.log(gifArrayMismatchPercentages[i][j]);
     }
+
+    for(j = 0; j < gifArrayMismatchPercentages[i].length - 1; j++){
+      j2 = j+1;
+      console.log(j + '. ' + gifArrayMismatchPercentages[i][j] + '  '+ j2 + '. ' + gifArrayMismatchPercentages[i][j+1]);
+      if(gifArrayMismatchPercentages[i][j] > gifArrayMismatchPercentages[i][j+1]){
+        console.log(gifArrayMismatchPercentages[i][j] - gifArrayMismatchPercentages[i][j+1]);
+        if(gifArrayMismatchPercentages[i][j] - gifArrayMismatchPercentages[i][j+1] > 100){
+            
+        }
+      }
+      else if (gifArrayMismatchPercentages[i][j] < gifArrayMismatchPercentages[i][j+1]) {
+        console.log(gifArrayMismatchPercentages[i][j+1] - gifArrayMismatchPercentages[i][j]);
+        if(gifArrayMismatchPercentages[i][j+1] - gifArrayMismatchPercentages[i][j] > 100){
+
+        }
+      }
+      else{
+
+      }
+    }
+
 
     //document.body.appendChild(gifArrayScreenshots[i][0]);
     //console.log(frameData.length);
