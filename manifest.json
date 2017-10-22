@@ -11,7 +11,8 @@
     "matches": [
       "<all_urls>"
     ],
-    "js": ["libraries/gif-frames.js",
+    "js": ["libraries/Resemble.js/resemble.js",
+           "libraries/gif-frames.js",
            "libraries/libgif/libgif.js",
            "libraries/libgif/rubbable.js",
            "js/content.js"]

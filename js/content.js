@@ -1,5 +1,5 @@
 //alert("Hello, This is FlashOff");
-alert(document.title);
+//alert(document.title);
 
 var images = [];
 var gifs = document.querySelectorAll('img[src$=".gif"]');
@@ -25,13 +25,29 @@ for(var i = 0; i < gifs.length; i++){
     gifArrayScreenshots[i] = new Array();
     //prints/saves all frames in the gif as DOM images.
     for(j=0; j < frameData.length; j++){
+      //i is gifs in page, and j is respective gif's frames.
       gifArrayScreenshots[i][j] = frameData[j].getImage();
+
       document.body.appendChild(frameData[j].getImage());
     }
+
+    //compares two
+    var diff = resemble(gifArrayScreenshots[i][0].toDataURL()).compareTo(gifArrayScreenshots[i][2].toDataURL()).ignoreColors().onComplete(function(data){
+
+    	console.log(data);
+      /*{
+    	  misMatchPercentage : 100, // %
+    	  isSameDimensions: true, // or false
+    	  dimensionDifference: { width: 0, height: -1 }, // defined if dimensions are not the same
+    	  getImageDataUrl: function(){}
+    	}*/
+    });
+
     document.body.appendChild(gifArrayScreenshots[i][0]);
     console.log(frameData.length);
   }).catch(console.error.bind(console));
 }
+
 
 
 
