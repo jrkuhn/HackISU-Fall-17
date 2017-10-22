@@ -35,8 +35,9 @@ for(var i = 0; i < gifs.length; i++){
     //compares two
     for(j = 0; j < frameData.length - 1; j++){
       var diff = resemble(gifArrayScreenshots[i][j].toDataURL()).compareTo(gifArrayScreenshots[i][j+1].toDataURL()).ignoreColors().onComplete(function(data){
-        gifArrayMismatchPercentages[i][j] = data.rawMisMatchPercentage;
+          gifArrayMismatchPercentages[i][j] = jQuery.extend(true, {}, data.rawMisMatchPercentage);
 
+          return data;
       });
       console.log(i + ". image" + j + " = " + gifArrayMismatchPercentages[i][j]);
     }
@@ -46,9 +47,6 @@ for(var i = 0; i < gifs.length; i++){
     console.log(frameData.length);
   }).catch(console.error.bind(console));
 }
-
-
-
 
 
 
