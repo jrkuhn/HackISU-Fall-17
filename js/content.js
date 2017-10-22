@@ -21,7 +21,7 @@ for(var i = 0; i < gifs.length; i++){
   //document.body.appendChild(gifs[i]);
 
 //gifFrames
-  gifFrames({ url: gifs[i].src, frames: 'all', outputType: 'canvas' }).then(function (frameData) {
+  gifFrames({ url: images[i].src, frames: 'all', outputType: 'canvas' }).then(function (frameData) {
     gifArrayScreenshots[i] = new Array();
     //prints/saves all frames in the gif as DOM images.
     for(j=0; j < frameData.length; j++){
@@ -29,11 +29,11 @@ for(var i = 0; i < gifs.length; i++){
       gifArrayScreenshots[i][j] = frameData[j].getImage();
 
       //console.log(gifArrayMismatchPercentages[i][j]);
-      document.body.appendChild(frameData[j].getImage());
+      //document.body.appendChild(frameData[j].getImage());
     }
 
-    gifArrayMismatchPercentages[i] = new Array();
 
+    gifArrayMismatchPercentages[i] = new Array();
 
     //compares two
 
@@ -44,23 +44,43 @@ for(var i = 0; i < gifs.length; i++){
       console.log(gifArrayMismatchPercentages[i][j]);
     }
 
+    var flashStreak = 0;
     for(j = 0; j < gifArrayMismatchPercentages[i].length - 1; j++){
       j2 = j+1;
       console.log(j + '. ' + gifArrayMismatchPercentages[i][j] + '  '+ j2 + '. ' + gifArrayMismatchPercentages[i][j+1]);
+
       if(gifArrayMismatchPercentages[i][j] > gifArrayMismatchPercentages[i][j+1]){
         console.log(gifArrayMismatchPercentages[i][j] - gifArrayMismatchPercentages[i][j+1]);
-        if(gifArrayMismatchPercentages[i][j] - gifArrayMismatchPercentages[i][j+1] > 100){
-            
+        if(gifArrayMismatchPercentages[i][j] - gifArrayMismatchPercentages[i][j+1] < 0.5){
+            flashStreak++;
+        }
+        else {
+            flashStreak = 0;
         }
       }
+
       else if (gifArrayMismatchPercentages[i][j] < gifArrayMismatchPercentages[i][j+1]) {
         console.log(gifArrayMismatchPercentages[i][j+1] - gifArrayMismatchPercentages[i][j]);
-        if(gifArrayMismatchPercentages[i][j+1] - gifArrayMismatchPercentages[i][j] > 100){
-
+        if(gifArrayMismatchPercentages[i][j+1] - gifArrayMismatchPercentages[i][j] < 0.5){
+            flashStreak++;
+        }
+        else {
+          flashStreak = 0;
         }
       }
-      else{
+      else {
+          flashStreak = 0;
+      }
 
+      if(flashStreak >= 5) {
+         alert(images[i].src + ' LIGHTS OUT ' + i);
+
+         //replace flashing
+         var still = document.createElement("img");
+         still.src = gifArrayScreenshots[i][0].toDataURL();
+         images[i].parentNode.replaceChild(still,images[i]);
+         flashStreak = 0;
+         break;
       }
     }
 

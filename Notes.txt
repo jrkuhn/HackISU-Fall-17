@@ -33,4 +33,7 @@ DATABASE
 
 Stretch
 
-1. freeze only gifs on screen (in viewport).
+1. replace the gif in the document with a still jpeg of itself IF flashing. + Alert
+
+
+10. freeze only gifs on screen (in viewport).
