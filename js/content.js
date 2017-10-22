@@ -36,33 +36,66 @@ for(var i = 0; i < gifs.length; i++){
 
 
     //compares two
+
     for(j = 0; j < gifArrayScreenshots.length - 1; j++){
-      IM.compare([
-          gifArrayScreenshots[i][j],
-          gifArrayScreenshots[i][j+1]
-      ],
-      function success(aCanvas, nElapsedTime, nPercentageDiff) {
-          // Code on success. All images have the same pixel info.
-          gifArrayMismatchPercentages[i][j] = nPercentageDiff;
-          console.log(nPercentageDiff);
-      },
-      function fail(oCanvas, nElapsedTime, nPercentageDiff) {
-          // Code on failing. Any image is different from others
-          gifArrayMismatchPercentages[i][j] = nPercentageDiff;
-          console.log(nPercentageDiff);
-      });
+      gifArrayMismatchPercentages[i][j] = rmsDiff(getBase64Image(gifArrayScreenshots[i][j]), getBase64Image(gifArrayScreenshots[i][j+1]));
+      console.log(gifArrayMismatchPercentages[i][j]);
     }
-
-
 
     //document.body.appendChild(gifArrayScreenshots[i][0]);
     console.log(frameData.length);
   }).catch(console.error.bind(console));
 }
 
+function rmsDiff(imgDataA,imgDataB) {
+  var dots = 0;
+  for(var i = 0; i < imgDataA.length; i++) {
+    dots += (imgDataA[i] - imgDataB[i]) * (imgDataA[i] - imgDataB[i]);
+  }
+  var rms = Math.sqrt(dots/imgDataA.length);
+  return rms;
+}
+
+function getBase64Image(img) {
+    // Create an empty canvas element
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Copy the image contents to the canvas
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    // Get the data-URL formatted image
+    // Firefox supports PNG and JPEG. You could check img.src to
+    // guess the original format, but be aware the using "image/jpg"
+    // will re-encode the image.
+    var dataURL = canvas.toDataURL("image/jpg");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
 
 
 //doesn't work now
+
+// console.log(  gifArrayScreenshots[i][j].src);
+// IM.setDebug(true);
+// IM.compare([
+//     gifArrayScreenshots[i][j],
+//     gifArrayScreenshots[i][j+1]
+// ],
+// function success(aCanvas, nElapsedTime, nPercentageDiff) {
+//     // Code on success. All images have the same pixel info.
+//     gifArrayMismatchPercentages[i][j] = nPercentageDiff;
+//     console.log(nPercentageDiff);
+// },
+// function fail(oCanvas, nElapsedTime, nPercentageDiff) {
+//     // Code on failing. Any image is different from others
+//     gifArrayMismatchPercentages[i][j] = nPercentageDiff;
+//     console.log(nPercentageDiff);
+// });
+
 //   for(j = 0; j < frameData.length - 1; j++){
 // //     var diff = resemble(gifArrayScreenshots[i][j].toDataURL()).compareTo(gifArrayScreenshots[i][j+1].toDataURL()).ignoreColors().onComplete(function(data){
 // //         gifArrayMismatchPercentages[i][j] =  data.rawMisMatchPercentage;
@@ -99,11 +132,11 @@ for(var i = 0; i < gifs.length; i++){
 
 
 //finds all videos
-var videos = document.querySelectorAll('a[href$=".mp4"]');
-
-if(videos.length > 0) {
-  console.log(videos[i].src);
-}
+// var videos = document.querySelectorAll('a[href$=".mp4"]');
+//
+// if(videos.length > 0) {
+//   console.log(videos[i].src);
+// }
 
 //commented code
 
