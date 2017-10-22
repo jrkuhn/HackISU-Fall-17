@@ -27,16 +27,48 @@ for(var i = 0; i < gifs.length; i++){
     for(j=0; j < frameData.length; j++){
       //i is gifs in page, and j is respective gif's frames.
       gifArrayScreenshots[i][j] = frameData[j].getImage();
-
+      //console.log(gifArrayMismatchPercentages[i][j]);
       document.body.appendChild(frameData[j].getImage());
     }
 
+    function Runnable(title, fn) {
+      this.title = title;
+      this.fn = fn;
+      this.async = fn && fn.length; // <-- RIGHT HERE
+      this.sync = !this.async;
+      this._timeout = 2000;
+      this._slow = 75;
+      this._enableTimeouts = true;
+      this.timedOut = false;
+      this._trace = new Error('done() called multiple times');
+      this._retries = -1;
+      this._currentRetry = 0;
+    }
+
+
+
+
+
+
+//setTimeout(3000);
     gifArrayMismatchPercentages[i] = new Array();
     //compares two
     for(j = 0; j < frameData.length - 1; j++){
-      var diff = resemble(gifArrayScreenshots[i][j].toDataURL()).compareTo(gifArrayScreenshots[i][j+1].toDataURL()).ignoreColors().onComplete(function(data){
-          gifArrayMismatchPercentages[i][j] = jQuery.extend(true, {}, data.rawMisMatchPercentage);
+  //     var diff = resemble(gifArrayScreenshots[i][j].toDataURL()).compareTo(gifArrayScreenshots[i][j+1].toDataURL()).ignoreColors().onComplete(function(data){
+  //         gifArrayMismatchPercentages[i][j] =  data.rawMisMatchPercentage;
+  // console.log(gifArrayMismatchPercentages[i][j]);
+  //
 
+
+
+
+
+
+
+
+
+
+    setTimeout(3000);
           return data;
       });
       console.log(i + ". image" + j + " = " + gifArrayMismatchPercentages[i][j]);
