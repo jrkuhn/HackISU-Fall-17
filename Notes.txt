@@ -8,7 +8,7 @@ CHECK2. how to read the elements in chrome tab.
 
 CHECK3. Find all videos in document and save them.
 
-4. Figure how to read each frame of a video (for comparison between frames)
+CHECK4. Figure how to read each frame of a video (for comparison between frames)
 
 5. For each video found, compare frame by frame to check for flashing
 
