@@ -16,6 +16,9 @@ CHECK3. Find all videos in document and save them.
 
 https://www.mathworks.com/matlabcentral/answers/74194-how-i-can-save-all-video-frames-in-array-of-images?requestedDomain=www.mathworks.com
 
+https://motherboard.vice.com/en_us/article/9am8de/so-how-exactly-does-a-gif-cause-a-seizure
+(this one will help us with explaining it to the judges)
+
 
 DATABASE
 
