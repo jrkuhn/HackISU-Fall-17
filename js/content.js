@@ -3,8 +3,8 @@
 
 var images = [];
 var gifs = document.querySelectorAll('img[src$=".gif"]');
-var gifArray = [];
 var gifArrayScreenshots = [];
+var gifArrayMismatchPercentages = [];
 
 var superGifs = [];
 
@@ -31,17 +31,16 @@ for(var i = 0; i < gifs.length; i++){
       document.body.appendChild(frameData[j].getImage());
     }
 
+    gifArrayMismatchPercentages[i] = new Array();
     //compares two
-    var diff = resemble(gifArrayScreenshots[i][0].toDataURL()).compareTo(gifArrayScreenshots[i][2].toDataURL()).ignoreColors().onComplete(function(data){
+    for(j = 0; j < frameData.length - 1; j++){
+      var diff = resemble(gifArrayScreenshots[i][j].toDataURL()).compareTo(gifArrayScreenshots[i][j+1].toDataURL()).ignoreColors().onComplete(function(data){
+        gifArrayMismatchPercentages[i][j] = data.rawMisMatchPercentage;
 
-    	console.log(data);
-      /*{
-    	  misMatchPercentage : 100, // %
-    	  isSameDimensions: true, // or false
-    	  dimensionDifference: { width: 0, height: -1 }, // defined if dimensions are not the same
-    	  getImageDataUrl: function(){}
-    	}*/
-    });
+      });
+      console.log(i + ". image" + j + " = " + gifArrayMismatchPercentages[i][j]);
+    }
+    console.log(gifArrayMismatchPercentages[i][0]);
 
     document.body.appendChild(gifArrayScreenshots[i][0]);
     console.log(frameData.length);
