@@ -12,7 +12,7 @@
       "<all_urls>"
     ],
     "js": ["libraries/jquery-3.2.1.min.js",
-           "libraries/Resemble.js/resemble.js",
+           "libraries/IM/IM.js",
            "libraries/gif-frames.js",
            "libraries/libgif/libgif.js",
            "libraries/libgif/rubbable.js",
